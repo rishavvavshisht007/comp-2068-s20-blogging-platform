@@ -9,6 +9,8 @@ app.set('view engine', 'ejs');
 
 app.use('/images', express.static('assets/images'));
 app.use('/css', express.static('assets/css'));
+app.use('/javascript', express.static('assets/javascript'));
+
 
 
 

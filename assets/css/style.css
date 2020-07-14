@@ -1,47 +1,28 @@
-/*
+
 html,
 body{
     height: 100%;
     width: 100%;
 }
 
-.home-cta {
-    background: url('/images/background.jpg');
-} */
-
-        body{background: url('/images/3.jpg');
-        height: 100%;
-        width: 100%;
-        background-size: cover;
-        } 
-       
-        .img{
-            height: 50%;
-            width: 30%;
-            margin: 0 auto ;
-            background: url('/images/1.jpg');
+        .home-cta{
+            height: 100%;
+            width: 100%;
+            background: url('/images/2.jpg');
             background-size: cover;
-            border-radius: 25%;
+            justify-content: center;
+            display: flex;
+            align-items: center;
             
-        }
-         .contact{width: 400px; padding: 55px; margin: 0 auto;}
 
-        .contact h1{color: black;}
-         .contact input[type=text],
-         .contact input[type=email],
-         textarea{
-             width: 100%; margin-bottom: 15px;
-             padding: 5px;
-         }
-         .contact a{
-             text-decoration: none;
-             background-color: chartreuse;
-             color: black;
-             display: block;
-             padding: 10px 15px;
-             text-align: center;
-             font-size: 15px;
-         }  
+        }
+        .home-cta > h1{
+            color: salmon;
+            text-shadow: 2px 2px 3px #ffffff;
+            font-size: 5rem;
+            text-align: center;
+        }
+      
 
          
         
