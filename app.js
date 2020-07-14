@@ -15,8 +15,10 @@ app.use('/javascript', express.static('assets/javascript'));
 
 
 //our routes
-const routes = require('./routes.js');
+const routes = require('./routes.js'); 
 app.use('/', routes);
 
 //start our server
-const port = process.env.PORT || 3000; app.listen(port, () => console.log(`Listening on port ${port}`);
+const port = process.env.PORT || 3000; 
+app.listen(port, () =>
+ console.log(`Listening on port ${port}`));
