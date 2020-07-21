@@ -5,8 +5,12 @@ exports.index = (req, res) => {
     res.send("hope all are here and safe");
 };
 
-exports.show = (req, res) => {
-    res.send("yeah");
+exports.show = async (req, res) => {
+const blog = await Blog.findById(req.params.id);
+res.render(`${viewPath}/show`,{
+pageTitle: blog.title,
+blog:blog
+});
 };
 
 exports.new = (req,res) => {
@@ -15,8 +19,17 @@ exports.new = (req,res) => {
     });
 };
 
-exports.create = (req, res) => {
-    res.send("hlo fam");
+exports.create = async(req, res) => {
+   console.log(`Blog body: ${JSON.stringify(req.body, null, 2)}`);
+
+   try{
+       const blog= await Blog.create(req.body);
+       res.redirect(`/blogs/${blog.id}`);
+   } 
+   catch(err){
+       res.send(err);
+   }
+
 };
 
 exports.edit = (req, res) => {

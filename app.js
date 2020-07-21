@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 
 app.use('/images', express.static('assets/images'));
 app.use('/css', express.static('assets/css'));
-app.use('/java', express.static('assets/java'));
+app.use('/javascript', express.static('assets/javascript'));
 
 // Mongo access URL
 const mongoose = require('mongoose');
