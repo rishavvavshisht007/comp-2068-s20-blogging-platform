@@ -40,9 +40,9 @@ app.use(session({
 //setup flash notifications
 const flash = require('connect-flash');
 app.use(flash());
-app.use('/', (res, req, next) => {
+app.use('/', (req, res, next) => {
 //setting default locals
-res.locals.pageTitle = 'untitled';
+res.locals.pageTitle = "untitled";
 
 //passing along flash message
 res.locals.flash = req.flash();

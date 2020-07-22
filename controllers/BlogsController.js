@@ -7,6 +7,8 @@ exports.index = (req, res) => {
 
 exports.show = async (req, res) => {
 const blog = await Blog.findById(req.params.id);
+req.flash('sucess', 'test 123');
+req.flash('sucess', 'test 456');
 res.render(`${viewPath}/show`,{
 pageTitle: blog.title,
 blog:blog
