@@ -29,6 +29,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+//setup our session
+const session = require('express-session');
+app.use(session({
+    secret:'any crispy secret here',
+    resave:true,
+    saveUninitialized:false
+}));
+
+//setup flash notifications
+const flash = require('connect-flash');
+app.use(flash());
+app.use('/', (res, req, next) => {
+//setting default locals
+res.locals.pageTitle = 'untitled';
+
+//passing along flash message
+res.locals.flash = req.flash();
+console.log(res.locals.flash);
+
+next();
+});
+
 //our routes
 const routes = require('./routes.js'); 
 app.use('/', routes);
