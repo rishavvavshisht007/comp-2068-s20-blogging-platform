@@ -27,9 +27,12 @@
                        <i class="fa fa-edit"></i>
                     </a>
                         &nbsp;/&nbsp;
-                    <a href="/blogs/<%= blog.id %>/delete">
-                       <i class="fa fa-trash"></i>
-                    </a>
+                        <form class="form-inline" action="/blogs/delete" method="post" onsubmit="return confirm('Are you sure you want to delete all your hard work?');">
+                            <input type="hidden" value="<%= blog.id %>" name="id">
+                            <button class="delete" type="submit">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </form>
                         &nbsp;/&nbsp;
                     <a href="/blogs/<%= blog.id %>/like">
                        <i class="fa fa-thumbs-o-up"></i>

@@ -3,7 +3,10 @@ const Blog = require('../models/blog');
 
 exports.index = async (req, res) => {
     try{
-    const blogs = await Blog.find();
+    const blogs = await Blog
+    .find()
+    .sort({updatedAt: 'desc'});
+
     res.render(`${viewPath}/index`, {
         pageTitle:'Archive',
         blogs: blogs
@@ -36,7 +39,7 @@ exports.new = (req,res) => {
 };
 
 exports.create = async(req, res) => {
-   console.log(`Blog body: ${JSON.stringify(req.body, null, 2)}`);
+   console.log(`Blog body: ${JSON.stringify(req.body, null, 2)}`); 
 
    try{
        const blog= await Blog.create(req.body);
@@ -57,17 +60,40 @@ exports.edit = async (req, res) => {
         res.render(`${viewPath}/edit`,{
         pageTitle: blog.title,
         formData: blog
+         
         });
-    } catch{
-        res.flash('danger', `Stop! There was an accesing this
-        blog:${error}`);
+    } catch (error) {
+        req.flash('danger', `Stop! There was an error accesing this blog: ${error}`);
         res.redirect('/');
     }
 };
 
-exports.update = (req, res) => {
-    res.send("How's u doing");
+exports.update = async (req, res) => {
+    try {
+        console.log(req.body);
+    let blog = await Blog.findById(req.body.id);
+    if (!blog) throw new Error ('Blog could  not be found');
+
+    await Blog.validate(req.body);
+    await Blog.updateOne(req.body);
+    
+    req.flash('success', 'The blog was updated succesfully.');
+    res.redirect(`/blogs/${req.body.id}`);
+
+    } catch (error) {
+        req.flash('danger', `Stop! There was an error updating this blog: ${error}`);
+        res.redirect(`/blogs/${req.body.id}/edit`);
+    } 
 };
-exports.delete = (req, res) => {
-    res.send("Good bye for now");
+exports.delete = async (req, res) => {
+   try{
+    console.log(req.body);
+    await Blog.deleteOne({_id: req.body.id});
+    req.flash('success', 'The blog was deleted succesfully.');
+    res.redirect(`/blogs`);
+
+   } catch{
+    req.flash('danger', ` There was an error deleting this blog: ${error}`);
+    res.redirect(`/blogs`);
+   }
 };

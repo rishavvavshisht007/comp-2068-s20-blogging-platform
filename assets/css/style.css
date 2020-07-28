@@ -8,7 +8,7 @@ body{
         .home-cta{
             height: 100%;
             width: 100%;
-            background: url('/images/2.jpg');
+            background: url('/images/6289.jpg');
             background-size: cover;
             justify-content: center;
             display: flex;
@@ -22,6 +22,29 @@ body{
             font-size: 5rem;
             text-align: center;
         }
+
+
+        .form-inline {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+          }
+          
+          a {
+            text-decoration: none !important;
+          }
+          
+          .form-inline > .delete {
+            border: none;
+            background: none;
+            color: #007bff;
+            margin: 0;
+            padding: 0;
+          }
+          
+          .form-inline > .delete:hover {
+            color: #0056b3;
+          }
       
 
          

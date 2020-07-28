@@ -47,7 +47,7 @@ res.locals.pageTitle = "untitled";
 //passing along flash message
 res.locals.flash = req.flash();
 res.locals.formData = req.session.formData || {};
-res.session.formData = {};
+req.session.formData = {};
 console.log(res.locals.flash);
 
 next();
