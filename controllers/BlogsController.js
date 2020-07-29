@@ -75,7 +75,7 @@ exports.update = async (req, res) => {
     if (!blog) throw new Error ('Blog could  not be found');
 
     await Blog.validate(req.body);
-    await Blog.updateOne(req.body);
+    await Blog.findByIdAndUpdate(req.body.id, req.body);
     
     req.flash('success', 'The blog was updated succesfully.');
     res.redirect(`/blogs/${req.body.id}`);
