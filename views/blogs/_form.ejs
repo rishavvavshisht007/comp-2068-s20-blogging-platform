@@ -1,11 +1,11 @@
 <form action="<%= (typeof actionPath === 'undefined') ? '/blogs' : actionPath %>" , method="POST">
    <% if  (typeof actionPath !== 'undefined') { %> 
-    <input type="hidden" name="id" value="<%= formData.id %> ">
+    <input type="hidden" name="id" value="<%= formData.id %>">
    <% } %>  
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" name="title" class="form-control" 
-      value="<%= formData.title %> ">
+      value="<%= formData.title %>">
     </div>
 
     <div class="form-group">
