@@ -3,8 +3,7 @@ const router = require('../routes');
 
 function auth (req, res, next ) {
     if (!req.isAuthenticated()) {
-        req.flash('danger', 'you need to login first.');
-        return res.redirect('/login');
+        return res.status(401).json ({message: "you must authenticate before using this API call"});
     }
     next();
 }
